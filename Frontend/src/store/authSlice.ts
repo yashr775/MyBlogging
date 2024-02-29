@@ -1,24 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-const initialState = {
-    status:false,
-    userData:null
+interface UserData {
+    databaseId:string,
+    name:string,
+    created:Date,
+    updated:Date
 }
 
+export interface AuthState {
+    status: boolean;
+    userData: UserData | null;
+}
+
+export interface StateInterface {
+    auth: AuthState;
+}
+
+// const initialState  = <StateInterface> {
+//     status:false,
+//     userData:null
+// }
+
+const initialState: StateInterface = {
+    auth: {
+        status: false,
+        userData: null
+    }
+};
 
 const authSlice = createSlice({
     name:"auth",
     initialState,
     reducers:{
         login:(state,action) => {
-         state.status = true;
-         state.userData = action.payload.userData;
+         state.auth.status = true;
+         state.auth.userData = action.payload.userData;
         },
 
         logout : (state) =>{
-              state.status = false;
-              state.userData = null;
+              state.auth.status = false;
+              state.auth.userData = null;
         }
     }
 })
