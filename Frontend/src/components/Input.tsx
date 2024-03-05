@@ -2,8 +2,9 @@ import React, { useId } from "react";
 
 interface InputProps {
   label: string;
-  type: "text"; // Ensure type is explicitly "text"
+  type: string; // Ensure type is explicitly "text"
   className?: string;
+  placeholder?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
