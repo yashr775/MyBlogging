@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserData {
-    databaseId:string,
+export interface UserData {
+    $id:string,
     name:string,
     created:Date,
     updated:Date

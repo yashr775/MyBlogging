@@ -1,10 +1,19 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
+
+interface FormData {
+  image: FileList | null;
+  title: string;
+  slug: string;
+  content: string;
+  featuredImage: string; // Allow null since it's optional
+  status: string;
+}
 
 interface RtePropTypes {
-  name: string;
-  control?: Control<FieldValues> | undefined;
+  name: FieldPath<FieldValues>;
+  control: Control<FieldValues> | Control<FormData>;
   label: string;
   defaultValue: string;
 }
@@ -21,7 +30,7 @@ export default function RTE({
 
       <Controller
         name={name || "content"}
-        control={control}
+        control={control as Control<FieldValues>}
         render={({ field: { onChange } }) => (
           <Editor
             initialValue={defaultValue}

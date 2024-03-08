@@ -2,9 +2,15 @@ import React, { useId } from "react";
 
 interface InputProps {
   label: string;
-  type: string; // Ensure type is explicitly "text"
+  type?: string;
   className?: string;
   placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  value?: string | number;
+  name?: string;
+  accept?: string;
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
