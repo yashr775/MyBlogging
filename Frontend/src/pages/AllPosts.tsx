@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, PostCard } from "../components";
+import { Container } from "../components";
 import appwriteService from "../appwrite/config";
 import { Models } from "appwrite";
+import PostCard from "../components/PostCard";
 
 // interface Document {
 //   databaseId: string;
@@ -26,7 +27,7 @@ function AllPosts() {
         <div className="flex flex-wrap">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
+              <PostCard title={""} featuredImage={""} {...post} />
             </div>
           ))}
         </div>
