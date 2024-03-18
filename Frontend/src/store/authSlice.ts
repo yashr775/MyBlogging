@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface UserData {
     $id:string,
@@ -16,12 +16,15 @@ export interface StateInterface {
     auth: AuthState;
 }
 
+export interface RootState {
+    auth: AuthState;
+}
 // const initialState  = <StateInterface> {
 //     status:false,
 //     userData:null
 // }
 
-const initialState: StateInterface = {
+export const initialState: StateInterface = {
     auth: {
         status: false,
         userData: null
@@ -32,7 +35,7 @@ const authSlice = createSlice({
     name:"auth",
     initialState,
     reducers:{
-        login:(state,action) => {
+        login:(state,action :  PayloadAction<{ userData: UserData }>) => {
          state.auth.status = true;
          state.auth.userData = action.payload.userData;
         },

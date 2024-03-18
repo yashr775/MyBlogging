@@ -6,6 +6,7 @@ interface ButtonProps {
   bgColor?: string; // Optional prop for background color
   textColor?: string; // Optional prop for text color
   className?: string; // Optional prop for additional class names
+  onClick?: () => void;
 }
 
 function Button({
