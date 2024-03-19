@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { StateInterface } from "../store/authSlice";
 
 interface PropTypes {
-  children: string;
-  authentication: true;
+  children: ReactNode;
+  authentication: boolean;
 }
 
-export default function Protected({ children, authentication }: PropTypes) {
+export default function Protected({
+  children,
+  authentication = true,
+}: PropTypes) {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(true);
   const authStatus = useSelector((state: StateInterface) => state.auth.status);
